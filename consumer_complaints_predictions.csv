@@ -1,0 +1,5 @@
+text,true_label,predicted_label
+mortgage payment dispute with lender,Mortgage,Mortgage
+loan application was rejected unfairly,Consumer Loan,Consumer Loan
+credit card interest charged wrongly,"Credit reporting, repair, or other","Credit reporting, repair, or other"
+debt collector called me multiple times,Debt collection,Debt collection

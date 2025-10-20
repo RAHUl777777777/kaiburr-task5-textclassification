@@ -1,0 +1,229 @@
+[
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "pandas",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pandas",
+        "description": "pandas",
+        "detail": "pandas",
+        "documentation": {}
+    },
+    {
+        "label": "re,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re.",
+        "description": "re.",
+        "detail": "re.",
+        "documentation": {}
+    },
+    {
+        "label": "train_test_split",
+        "importPath": "sklearn.model_selection",
+        "description": "sklearn.model_selection",
+        "isExtraImport": true,
+        "detail": "sklearn.model_selection",
+        "documentation": {}
+    },
+    {
+        "label": "TfidfVectorizer",
+        "importPath": "sklearn.feature_extraction.text",
+        "description": "sklearn.feature_extraction.text",
+        "isExtraImport": true,
+        "detail": "sklearn.feature_extraction.text",
+        "documentation": {}
+    },
+    {
+        "label": "LabelEncoder",
+        "importPath": "sklearn.preprocessing",
+        "description": "sklearn.preprocessing",
+        "isExtraImport": true,
+        "detail": "sklearn.preprocessing",
+        "documentation": {}
+    },
+    {
+        "label": "LogisticRegression",
+        "importPath": "sklearn.linear_model",
+        "description": "sklearn.linear_model",
+        "isExtraImport": true,
+        "detail": "sklearn.linear_model",
+        "documentation": {}
+    },
+    {
+        "label": "classification_report",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "confusion_matrix",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "accuracy_score",
+        "importPath": "sklearn.metrics",
+        "description": "sklearn.metrics",
+        "isExtraImport": true,
+        "detail": "sklearn.metrics",
+        "documentation": {}
+    },
+    {
+        "label": "matplotlib.pyplot",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
+        "label": "seaborn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "seaborn",
+        "description": "seaborn",
+        "detail": "seaborn",
+        "documentation": {}
+    },
+    {
+        "label": "joblib",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "joblib",
+        "description": "joblib",
+        "detail": "joblib",
+        "documentation": {}
+    },
+    {
+        "label": "clean_text",
+        "kind": 2,
+        "importPath": "complaint_classification",
+        "description": "complaint_classification",
+        "peekOfCode": "def clean_text(text):\n    text = str(text).lower()\n    text = re.sub(r'\\n', ' ', text)\n    text = re.sub(r'\\d+', ' ', text)\n    text = text.translate(str.maketrans('', '', string.punctuation))\n    text = re.sub(r'\\s+', ' ', text).strip()\n    return text\ndf['clean_text'] = df['Consumer complaint narrative'].apply(clean_text)\n# ===============================\n# 3️⃣ Encode Labels",
+        "detail": "complaint_classification",
+        "documentation": {}
+    },
+    {
+        "label": "data",
+        "kind": 5,
+        "importPath": "complaint_classification",
+        "description": "complaint_classification",
+        "peekOfCode": "data = {\n    \"Consumer complaint narrative\": [\n        \"I was charged incorrectly by my bank\",\n        \"Debt collector called me multiple times\",\n        \"Loan application was rejected unfairly\",\n        \"Mortgage payment dispute with lender\",\n        \"Credit card interest charged wrongly\",\n        \"Debt collection agency harassed me\",\n        \"Consumer loan process took too long\",\n        \"Mortgage account was mismanaged\"",
+        "detail": "complaint_classification",
+        "documentation": {}
+    },
+    {
+        "label": "df",
+        "kind": 5,
+        "importPath": "complaint_classification",
+        "description": "complaint_classification",
+        "peekOfCode": "df = pd.DataFrame(data)\ndf.to_csv(\"consumer_complaints_sample.csv\", index=False)\nprint(\"Sample CSV created: consumer_complaints_sample.csv\")\nprint(df)\n# ===============================\n# 2️⃣ Preprocess Text\n# ===============================\ndef clean_text(text):\n    text = str(text).lower()\n    text = re.sub(r'\\n', ' ', text)",
+        "detail": "complaint_classification",
+        "documentation": {}
+    },
+    {
+        "label": "df['clean_text']",
+        "kind": 5,
+        "importPath": "complaint_classification",
+        "description": "complaint_classification",
+        "peekOfCode": "df['clean_text'] = df['Consumer complaint narrative'].apply(clean_text)\n# ===============================\n# 3️⃣ Encode Labels\n# ===============================\nle = LabelEncoder()\ndf['label_enc'] = le.fit_transform(df['Product'])\nprint(\"\\nLabel encoding mapping:\")\nfor i, cls in enumerate(le.classes_):\n    print(f\"{i} -> {cls}\")\n# ===============================",
+        "detail": "complaint_classification",
+        "documentation": {}
+    },
+    {
+        "label": "le",
+        "kind": 5,
+        "importPath": "complaint_classification",
+        "description": "complaint_classification",
+        "peekOfCode": "le = LabelEncoder()\ndf['label_enc'] = le.fit_transform(df['Product'])\nprint(\"\\nLabel encoding mapping:\")\nfor i, cls in enumerate(le.classes_):\n    print(f\"{i} -> {cls}\")\n# ===============================\n# 4️⃣ Train/Test Split\n# ===============================\n# For tiny dataset, use 50% test size so each class is represented\nX_train, X_test, y_train, y_test = train_test_split(",
+        "detail": "complaint_classification",
+        "documentation": {}
+    },
+    {
+        "label": "df['label_enc']",
+        "kind": 5,
+        "importPath": "complaint_classification",
+        "description": "complaint_classification",
+        "peekOfCode": "df['label_enc'] = le.fit_transform(df['Product'])\nprint(\"\\nLabel encoding mapping:\")\nfor i, cls in enumerate(le.classes_):\n    print(f\"{i} -> {cls}\")\n# ===============================\n# 4️⃣ Train/Test Split\n# ===============================\n# For tiny dataset, use 50% test size so each class is represented\nX_train, X_test, y_train, y_test = train_test_split(\n    df['clean_text'], df['label_enc'], test_size=0.5, random_state=42, stratify=df['label_enc']",
+        "detail": "complaint_classification",
+        "documentation": {}
+    },
+    {
+        "label": "tfidf",
+        "kind": 5,
+        "importPath": "complaint_classification",
+        "description": "complaint_classification",
+        "peekOfCode": "tfidf = TfidfVectorizer(max_features=1000, ngram_range=(1,2))\nX_train_tfidf = tfidf.fit_transform(X_train)\nX_test_tfidf = tfidf.transform(X_test)\n# ===============================\n# 6️⃣ Train Model\n# ===============================\nmodel = LogisticRegression(max_iter=500, multi_class='auto', solver='lbfgs')\nmodel.fit(X_train_tfidf, y_train)\n# ===============================\n# 7️⃣ Evaluation",
+        "detail": "complaint_classification",
+        "documentation": {}
+    },
+    {
+        "label": "X_train_tfidf",
+        "kind": 5,
+        "importPath": "complaint_classification",
+        "description": "complaint_classification",
+        "peekOfCode": "X_train_tfidf = tfidf.fit_transform(X_train)\nX_test_tfidf = tfidf.transform(X_test)\n# ===============================\n# 6️⃣ Train Model\n# ===============================\nmodel = LogisticRegression(max_iter=500, multi_class='auto', solver='lbfgs')\nmodel.fit(X_train_tfidf, y_train)\n# ===============================\n# 7️⃣ Evaluation\n# ===============================",
+        "detail": "complaint_classification",
+        "documentation": {}
+    },
+    {
+        "label": "X_test_tfidf",
+        "kind": 5,
+        "importPath": "complaint_classification",
+        "description": "complaint_classification",
+        "peekOfCode": "X_test_tfidf = tfidf.transform(X_test)\n# ===============================\n# 6️⃣ Train Model\n# ===============================\nmodel = LogisticRegression(max_iter=500, multi_class='auto', solver='lbfgs')\nmodel.fit(X_train_tfidf, y_train)\n# ===============================\n# 7️⃣ Evaluation\n# ===============================\ny_pred = model.predict(X_test_tfidf)",
+        "detail": "complaint_classification",
+        "documentation": {}
+    },
+    {
+        "label": "model",
+        "kind": 5,
+        "importPath": "complaint_classification",
+        "description": "complaint_classification",
+        "peekOfCode": "model = LogisticRegression(max_iter=500, multi_class='auto', solver='lbfgs')\nmodel.fit(X_train_tfidf, y_train)\n# ===============================\n# 7️⃣ Evaluation\n# ===============================\ny_pred = model.predict(X_test_tfidf)\nprint(\"\\nAccuracy:\", accuracy_score(y_test, y_pred))\nprint(\"\\nClassification Report:\\n\", classification_report(y_test, y_pred, target_names=le.classes_))\n# Confusion Matrix\ncm = confusion_matrix(y_test, y_pred)",
+        "detail": "complaint_classification",
+        "documentation": {}
+    },
+    {
+        "label": "y_pred",
+        "kind": 5,
+        "importPath": "complaint_classification",
+        "description": "complaint_classification",
+        "peekOfCode": "y_pred = model.predict(X_test_tfidf)\nprint(\"\\nAccuracy:\", accuracy_score(y_test, y_pred))\nprint(\"\\nClassification Report:\\n\", classification_report(y_test, y_pred, target_names=le.classes_))\n# Confusion Matrix\ncm = confusion_matrix(y_test, y_pred)\nplt.figure(figsize=(8,6))\nsns.heatmap(cm, annot=True, fmt='d', xticklabels=le.classes_, yticklabels=le.classes_, cmap='Blues')\nplt.title(\"Confusion Matrix\")\nplt.ylabel(\"True\")\nplt.xlabel(\"Predicted\")",
+        "detail": "complaint_classification",
+        "documentation": {}
+    },
+    {
+        "label": "cm",
+        "kind": 5,
+        "importPath": "complaint_classification",
+        "description": "complaint_classification",
+        "peekOfCode": "cm = confusion_matrix(y_test, y_pred)\nplt.figure(figsize=(8,6))\nsns.heatmap(cm, annot=True, fmt='d', xticklabels=le.classes_, yticklabels=le.classes_, cmap='Blues')\nplt.title(\"Confusion Matrix\")\nplt.ylabel(\"True\")\nplt.xlabel(\"Predicted\")\nplt.show()\n# ===============================\n# 8️⃣ Save Predictions\n# ===============================",
+        "detail": "complaint_classification",
+        "documentation": {}
+    },
+    {
+        "label": "df_test",
+        "kind": 5,
+        "importPath": "complaint_classification",
+        "description": "complaint_classification",
+        "peekOfCode": "df_test = pd.DataFrame({\n    'text': X_test,\n    'true_label': le.inverse_transform(y_test),\n    'predicted_label': le.inverse_transform(y_pred)\n})\ndf_test.to_csv(\"consumer_complaints_predictions.csv\", index=False)\nprint(\"\\nPredictions saved as consumer_complaints_predictions.csv\")\n# ===============================\n# 9️⃣ Save Model & Vectorizer\n# ===============================",
+        "detail": "complaint_classification",
+        "documentation": {}
+    }
+]
